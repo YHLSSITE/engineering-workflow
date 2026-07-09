@@ -58,7 +58,3 @@ Use the support skills when the work calls for them:
 - `improve-codebase-architecture` for codebase health work.
 - `domain-modeling`, `research`, `prototype`, and `codebase-design` to reduce planning and design risk.
 - `codex-handoff` to move current context into a fresh Codex thread.
-
-## Attribution
-
-Most skills here are adapted from Matt Pocock's `mattpocock/skills` repository, which is MIT licensed. The installed local workflow has been renamed and adapted for neutral Engineering Workflow terminology and Codex usage. See `LICENSE` and `NOTICE.md`.
