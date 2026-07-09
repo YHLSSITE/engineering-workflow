@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering Workflow Skills Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18202b;
+      --muted: #5e6b7a;
+      --line: #d9e0e8;
+      --soft-line: #ecf0f4;
+      --paper: #ffffff;
+      --page: #f6f8fb;
+      --navy: #17324d;
+      --green: #1f8a54;
+      --amber: #b7791f;
+      --red: #bf3a3a;
+      --violet: #7b3fb2;
+      --blue: #2368b5;
+      --teal: #167c80;
+      --slate: #4b5563;
+      --rose: #b83280;
+      --focus: #0f766e;
+      --shadow: 0 12px 30px rgba(24, 32, 43, 0.08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eef3f8 0, #f6f8fb 280px),
+        var(--page);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--focus);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: 12px;
+      transform: translateY(-140%);
+      background: var(--navy);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 48px 0 28px;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 820px;
+      margin-top: 10px;
+      font-size: clamp(2.1rem, 4vw, 4.25rem);
+      color: var(--navy);
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      color: var(--navy);
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    .lede {
+      max-width: 800px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .quick-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--ink);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    main {
+      padding-bottom: 56px;
+    }
+
+    section {
+      margin-top: 28px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      max-width: 640px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .digest-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .start-here {
+      display: grid;
+      grid-template-columns: 0.95fr 1.25fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .digest-card,
+    .start-card,
+    .flow-node,
+    .skill-card,
+    .rule-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .start-card {
+      min-height: 150px;
+      padding: 18px;
+      border-width: 2px;
+      border-color: var(--navy);
+      background:
+        linear-gradient(180deg, #ffffff 0, #eef5ff 100%);
+    }
+
+    .start-card.primary {
+      border-color: var(--green);
+      background:
+        linear-gradient(180deg, #ffffff 0, #eefaf3 100%);
+    }
+
+    .start-card .step-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 12px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .start-card.primary .step-tag {
+      background: var(--green);
+    }
+
+    .start-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+
+    .start-card p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .digest-card {
+      min-height: 132px;
+      padding: 16px;
+      border-top: 4px solid var(--blue);
+    }
+
+    .digest-card:nth-child(2) {
+      border-top-color: var(--green);
+    }
+
+    .digest-card:nth-child(3) {
+      border-top-color: var(--amber);
+    }
+
+    .digest-card:nth-child(4) {
+      border-top-color: var(--violet);
+    }
+
+    .digest-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy);
+      font-size: 0.98rem;
+    }
+
+    .digest-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .diagram-wrap {
+      overflow-x: auto;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .flow-map {
+      min-width: 920px;
+    }
+
+    .flow-row {
+      display: grid;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .flow-row.single {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row.entry {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .flow-row.mainline {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin: 12px -2px 20px;
+      padding: 18px;
+      border: 2px solid var(--navy);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, #edf5ff 0, #ffffff 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(35, 104, 181, 0.16),
+        0 18px 38px rgba(23, 50, 77, 0.14);
+    }
+
+    .flow-row.support {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .flow-node {
+      min-height: 126px;
+      padding: 14px;
+      border-top: 5px solid var(--slate);
+    }
+
+    .flow-node .kicker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .flow-node h3 {
+      color: var(--navy);
+    }
+
+    .flow-node h3 a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.28);
+    }
+
+    .flow-node h3 a:hover,
+    .flow-node h3 a:focus-visible {
+      color: var(--focus);
+      border-bottom-color: currentColor;
+      text-decoration: none;
+    }
+
+    .flow-node h3 a:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .flow-node p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .flow-row.mainline .flow-node {
+      position: relative;
+      min-height: 168px;
+      padding: 18px;
+      border-width: 2px;
+      border-top-width: 8px;
+      box-shadow: 0 12px 26px rgba(23, 50, 77, 0.13);
+    }
+
+    .flow-row.mainline .flow-node h3 {
+      font-size: 1.08rem;
+    }
+
+    .flow-row.mainline .flow-node p {
+      font-size: 0.94rem;
+    }
+
+    .flow-row.mainline .flow-node .kicker {
+      color: var(--navy);
+      font-size: 0.82rem;
+    }
+
+    .flow-row.mainline .flow-node .num {
+      width: 34px;
+      height: 34px;
+      font-size: 1rem;
+    }
+
+    .flow-row.mainline .flow-node:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: -20px;
+      width: 28px;
+      height: 3px;
+      background: var(--navy);
+      transform: translateY(-50%);
+    }
+
+    .flow-row.mainline .flow-node:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      right: -24px;
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 10px solid var(--navy);
+      transform: translateY(-50%);
+    }
+
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--slate);
+      font-size: 0.78rem;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .setup {
+      border-top-color: var(--navy);
+    }
+
+    .setup .num {
+      background: var(--navy);
+    }
+
+    .green {
+      border-top-color: var(--green);
+    }
+
+    .green .num {
+      background: var(--green);
+    }
+
+    .amber {
+      border-top-color: var(--amber);
+    }
+
+    .amber .num {
+      background: var(--amber);
+    }
+
+    .red {
+      border-top-color: var(--red);
+    }
+
+    .red .num {
+      background: var(--red);
+    }
+
+    .violet {
+      border-top-color: var(--violet);
+    }
+
+    .violet .num {
+      background: var(--violet);
+    }
+
+    .blue {
+      border-top-color: var(--blue);
+    }
+
+    .blue .num {
+      background: var(--blue);
+    }
+
+    .teal {
+      border-top-color: var(--teal);
+    }
+
+    .teal .num {
+      background: var(--teal);
+    }
+
+    .rose {
+      border-top-color: var(--rose);
+    }
+
+    .rose .num {
+      background: var(--rose);
+    }
+
+    .arrow-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      color: var(--muted);
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .arrow-row span {
+      min-height: 24px;
+    }
+
+    .lane-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0 8px;
+      color: var(--navy);
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .lane-label::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--soft-line);
+    }
+
+    .lane-label.primary-lane {
+      margin-top: 24px;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .lane-label.primary-lane::after {
+      height: 3px;
+      background: var(--navy);
+    }
+
+    .main-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .diagram-note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .rule-card {
+      padding: 16px;
+      border-left: 5px solid var(--teal);
+    }
+
+    .rule-card:nth-child(2) {
+      border-left-color: var(--amber);
+    }
+
+    .rule-card:nth-child(3) {
+      border-left-color: var(--rose);
+    }
+
+    .rule-card h3 {
+      color: var(--navy);
+    }
+
+    .rule-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill-card {
+      padding: 18px;
+      border-top: 5px solid var(--blue);
+      scroll-margin-top: 18px;
+    }
+
+    .skill-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+
+    .skill-card .summary {
+      margin: 10px 0 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    dl {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .fact {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    dt {
+      margin: 0;
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    dd {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .path {
+      display: inline-block;
+      max-width: 100%;
+      padding: 2px 6px;
+      border: 1px solid var(--soft-line);
+      border-radius: 6px;
+      background: #f8fafc;
+      color: #2f3b48;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      overflow-wrap: anywhere;
+    }
+
+    a.path:hover,
+    a.path:focus-visible {
+      border-color: var(--focus);
+      color: var(--focus);
+      text-decoration: none;
+    }
+
+    a.path:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 920px) {
+      .digest-grid,
+      .start-here,
+      .rules-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 22px, 1180px);
+      }
+
+      header {
+        padding-top: 32px;
+      }
+
+      .quick-nav a {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .fact {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="shell">
+    <div class="eyebrow">Local Codex skills guide</div>
+    <h1>Engineering Workflow Skills Guide</h1>
+    <p class="lede">
+      A practical map for using the installed Engineering Workflow skill set. For a new repo,
+      run setup once. For project work, start at step 1 with grill-with-docs, then specify,
+      ticket, implement, and review.
+    </p>
+    <nav class="quick-nav" aria-label="Page sections">
+      <a href="#digest">Workflow Digest</a>
+      <a href="#diagram">Diagram</a>
+      <a href="#rules">Operating Rules</a>
+      <a href="#skills">Skill Details</a>
+    </nav>
+  </header>
+
+  <main id="main" class="shell">
+    <section id="digest" aria-labelledby="digest-title">
+      <div class="section-head">
+        <h2 id="digest-title">Workflow Digest</h2>
+        <p>Start a new repository with the one-time setup skill. Start every real product effort with the numbered main delivery path. The other skills are support lanes for special situations.</p>
+      </div>
+
+      <div class="start-here">
+        <article class="start-card">
+          <span class="step-tag">First time in a repo</span>
+          <strong>Run <a class="path" href="#skill-setup-engineering-workflow">setup-engineering-workflow</a> once.</strong>
+          <p>This prepares labels, tracker vocabulary, and domain documentation locations. After that, it should not be part of every feature loop.</p>
+        </article>
+        <article class="start-card primary">
+          <span class="step-tag">First step for project work</span>
+          <strong>Begin with <a class="path" href="#skill-grill-with-docs">grill-with-docs</a>.</strong>
+          <p>This is step 1 of the main workflow. It turns a loose idea into a defensible plan before specs, tickets, implementation, or review.</p>
+        </article>
+      </div>
+
+      <div class="digest-grid">
+        <article class="digest-card">
+          <strong>1. Sharpen the idea</strong>
+          <p>Use <a class="path" href="#skill-grill-with-docs">grill-with-docs</a> as the default front door. It asks hard questions and records decisions while the plan becomes crisp.</p>
+        </article>
+        <article class="digest-card">
+          <strong>2. Write the spec</strong>
+          <p>Use <a class="path" href="#skill-to-spec">to-spec</a> to capture the product-level contract, scope, requirements, and acceptance criteria.</p>
+        </article>
+        <article class="digest-card">
+          <strong>3. Create the tickets</strong>
+          <p>Use <a class="path" href="#skill-to-tickets">to-tickets</a> for tracer-bullet implementation slices with blockers and verification notes.</p>
+        </article>
+        <article class="digest-card">
+          <strong>4-5. Build and review</strong>
+          <p>Use <a class="path" href="#skill-implement">implement</a>, bring in <a class="path" href="#skill-tdd">tdd</a> where possible, then run <a class="path" href="#skill-code-review">code-review</a> against the spec and standards.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="diagram" aria-labelledby="diagram-title">
+      <div class="section-head">
+        <h2 id="diagram-title">Workflow Diagram</h2>
+        <p>Read this top-down when starting work: one-time repo setup first, then the primary delivery path. Optional lanes sit below the main path.</p>
+      </div>
+
+      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to code-review, followed by optional support lanes and handoff.">
+        <div class="flow-map">
+          <div class="lane-label">Start here for a new repo</div>
+          <div class="flow-row single">
+            <article class="flow-node setup">
+              <div class="kicker"><span class="num">0</span> One-time repository setup</div>
+              <h3><a href="#skill-setup-engineering-workflow">setup-engineering-workflow</a></h3>
+              <p>Run once when adopting the workflow in a repo. It prepares labels, issue tracker vocabulary, and domain docs.</p>
+            </article>
+          </div>
+
+          <div class="arrow-row" aria-hidden="true">
+            <span>&darr;</span><span>&darr;</span><span>&darr;</span><span>&darr;</span><span>&darr;</span>
+          </div>
+
+          <div class="lane-label primary-lane"><span class="main-badge">Primary</span><span>Main delivery path for project work</span></div>
+          <div class="flow-row mainline">
+            <article class="flow-node green">
+              <div class="kicker"><span class="num">1</span> Sharpen</div>
+              <h3><a href="#skill-grill-with-docs">grill-with-docs</a></h3>
+              <p>Convert an idea into a defensible plan with recorded terminology and decisions.</p>
+            </article>
+            <article class="flow-node amber">
+              <div class="kicker"><span class="num">2</span> Specify</div>
+              <h3><a href="#skill-to-spec">to-spec</a></h3>
+              <p>Synthesize the conversation into a project issue, PRD, or spec without restarting the interview.</p>
+            </article>
+            <article class="flow-node red">
+              <div class="kicker"><span class="num">3</span> Slice</div>
+              <h3><a href="#skill-to-tickets">to-tickets</a></h3>
+              <p>Create tracer-bullet tickets with blocking edges and clear expected outcomes.</p>
+            </article>
+            <article class="flow-node violet">
+              <div class="kicker"><span class="num">4</span> Build</div>
+              <h3><a href="#skill-implement">implement</a> + <a href="#skill-tdd">tdd</a></h3>
+              <p>Implement one ticket or spec slice, using tests first where the risk justifies it.</p>
+            </article>
+            <article class="flow-node blue">
+              <div class="kicker"><span class="num">5</span> Review</div>
+              <h3><a href="#skill-code-review">code-review</a></h3>
+              <p>Review the diff against both repo standards and the originating spec before merge.</p>
+            </article>
+          </div>
+
+          <div class="lane-label">Alternate on-ramps for special cases</div>
+          <div class="flow-row entry">
+            <article class="flow-node teal">
+              <div class="kicker"><span class="num">A</span> Huge or foggy</div>
+              <h3><a href="#skill-wayfinder">wayfinder</a></h3>
+              <p>Use before the main path when the work is too large or unknown for a single spec.</p>
+            </article>
+            <article class="flow-node amber">
+              <div class="kicker"><span class="num">B</span> Raw intake</div>
+              <h3><a href="#skill-triage">triage</a></h3>
+              <p>Use when incoming issues or external PRs need categorizing, verification, or an agent-ready brief.</p>
+            </article>
+            <article class="flow-node red">
+              <div class="kicker"><span class="num">C</span> Broken behavior</div>
+              <h3><a href="#skill-diagnosing-bugs">diagnosing-bugs</a></h3>
+              <p>Use before implementation when the work starts from a failure, regression, slowness, or flaky behavior.</p>
+            </article>
+            <article class="flow-node violet">
+              <div class="kicker"><span class="num">D</span> Code health</div>
+              <h3><a href="#skill-improve-codebase-architecture">improve-codebase-architecture</a></h3>
+              <p>Use when the starting point is architecture debt rather than a product feature.</p>
+            </article>
+          </div>
+
+          <div class="lane-label">Support and de-risk paths</div>
+          <div class="flow-row support">
+            <article class="flow-node green">
+              <div class="kicker"><span class="num">S1</span> Fast pressure test</div>
+              <h3><a href="#skill-grilling">grilling</a></h3>
+              <p>Use for a focused interview when you do not need the documentation output of grill-with-docs.</p>
+            </article>
+            <article class="flow-node teal">
+              <div class="kicker"><span class="num">S2</span> Shared language</div>
+              <h3><a href="#skill-domain-modeling">domain-modeling</a></h3>
+              <p>Name the domain concepts, resolve ambiguity, and capture durable terms or decisions.</p>
+            </article>
+            <article class="flow-node blue">
+              <div class="kicker"><span class="num">S3</span> Unknown facts</div>
+              <h3><a href="#skill-research">research</a></h3>
+              <p>Gather high-trust evidence and save findings when docs, APIs, rules, or product facts matter.</p>
+            </article>
+            <article class="flow-node rose">
+              <div class="kicker"><span class="num">S4</span> Risky design</div>
+              <h3><a href="#skill-prototype">prototype</a> + <a href="#skill-codebase-design">codebase-design</a></h3>
+              <p>Test uncertain UI, state, or module boundaries before turning the plan into implementation work.</p>
+            </article>
+          </div>
+
+          <div class="lane-label">Context transfer</div>
+          <div class="flow-row single">
+            <article class="flow-node setup">
+              <div class="kicker"><span class="num">H</span> Whenever needed</div>
+              <h3><a href="#skill-codex-handoff">codex-handoff</a></h3>
+              <p>Move work into a fresh Codex thread with a concise, redacted summary of goal, context, decisions, verification, and next action.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <p class="diagram-note">
+        To start a new project in an already prepared repo, begin at step 1: grill-with-docs. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. The optional lanes below the main path feed back into planning, specification, or implementation when the work needs extra clarity.
+      </p>
+    </section>
+
+    <section id="rules" aria-labelledby="rules-title">
+      <div class="section-head">
+        <h2 id="rules-title">Operating Rules</h2>
+        <p>These rules keep the workflow useful instead of ceremonial.</p>
+      </div>
+
+      <div class="rules-grid">
+        <article class="rule-card">
+          <h3>Use the smallest useful loop</h3>
+          <p>Do not force every idea through every support skill. Use research, prototype, codebase-design, or wayfinder only when they reduce real uncertainty.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Keep tickets independently shippable</h3>
+          <p>Each ticket should have a clear user or system outcome, known blockers, verification steps, and enough context for a fresh Codex thread.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Review against the promise</h3>
+          <p>Code review is not just style review. It should check whether the implementation actually matches the spec, ticket, and project standards.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="section-head">
+        <h2 id="skills-title">Skill Details</h2>
+        <p>This section explains each skill in the updated Engineering Workflow set and how it hands off to the next step.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article id="skill-setup-engineering-workflow" class="skill-card setup">
+          <h3><span class="num">0</span> setup-engineering-workflow</h3>
+          <p class="summary">The repo-level setup step. It prepares the environment where the other skills can publish issues, label work, and store domain documentation consistently.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>Starting the workflow in a new repo or normalizing an existing repo before planning work.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Issue tracker conventions, triage labels, and a predictable domain-doc layout.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>Any planning or delivery skill, especially grill-with-docs, triage, to-spec, and to-tickets.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-wayfinder" class="skill-card teal">
+          <h3><span class="num">A</span> wayfinder</h3>
+          <p class="summary">The large-work navigator. It is for work too broad or uncertain for a single conversation, spec, or ticket set.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>The destination is clear enough to care about, but the route requires investigation across multiple sessions.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A map of investigation tickets and a path toward a spec once enough unknowns are resolved.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>research, prototype, grill-with-docs, or to-spec depending on what each investigation finds.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-grill-with-docs" class="skill-card green">
+          <h3><span class="num">1</span> grill-with-docs</h3>
+          <p class="summary">The recommended default starting skill for a product idea or design. It sharpens the plan by asking hard questions and records the answers as durable docs.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>You have an idea, plan, or design that needs pressure before it becomes a spec.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Clarified scope, assumptions, risks, glossary updates, and architectural decision records where useful.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>to-spec when the plan is crisp, or research/prototype/codebase-design if unanswered risks remain.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-grilling" class="skill-card green">
+          <h3><span class="num">S1</span> grilling</h3>
+          <p class="summary">The lighter pressure-test interview. It asks direct questions about a plan or design without making documentation the main output.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>You need a quick challenge session, or you want to stress-test a narrow plan before documenting it.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Sharper assumptions, exposed gaps, and clearer acceptance criteria.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs if the answers should become durable docs, or to-spec if enough clarity already exists.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-domain-modeling" class="skill-card teal">
+          <h3><span class="num">S2</span> domain-modeling</h3>
+          <p class="summary">The vocabulary and decision-capture skill. It keeps the project language stable as the product and codebase evolve.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>Terms are ambiguous, domain concepts are drifting, or a decision deserves a durable record.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Glossary entries, canonical terms, clarified relationships, and architecture decision records.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs, to-spec, codebase-design, and implementation tickets that need shared language.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-research" class="skill-card blue">
+          <h3><span class="num">S3</span> research</h3>
+          <p class="summary">The evidence-gathering skill. It answers factual questions using high-trust sources and saves the result so planning does not rely on memory.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>External docs, APIs, product behavior, legal constraints, standards, or current facts affect the design.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A Markdown research note with findings, sources, and implications for the work.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs, to-spec, prototype, or implement depending on whether the finding changes design or execution.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-prototype" class="skill-card rose">
+          <h3><span class="num">S4</span> prototype</h3>
+          <p class="summary">The throwaway proof skill. It builds a small artifact to answer a specific design, UI, state, or logic question.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>A cheap experiment would reveal more than more discussion, especially for interaction, state, or feasibility questions.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A disposable prototype and a decision about what should or should not move into production work.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs or to-spec after the prototype resolves the uncertainty.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-codebase-design" class="skill-card rose">
+          <h3><span class="num">S5</span> codebase-design</h3>
+          <p class="summary">The module-design vocabulary skill. It helps decide where interfaces, boundaries, and deeper modules should live.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>You are designing or improving an API, making code more testable, or deciding how a feature should fit the existing architecture.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Clearer module boundaries, simpler interfaces, and implementation guidance for maintainable code.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>to-spec, to-tickets, implement, or improve-codebase-architecture for broader architecture work.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-to-spec" class="skill-card amber">
+          <h3><span class="num">2</span> to-spec</h3>
+          <p class="summary">The synthesis step. It turns the current conversation and decisions into a spec without restarting the discovery process.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>The idea is clear enough that future work needs a stable written contract.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A spec or project issue covering problem, goals, scope, requirements, constraints, and acceptance criteria.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>to-tickets for implementation slicing, or back to grilling/research if the spec exposes gaps.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-to-tickets" class="skill-card red">
+          <h3><span class="num">3</span> to-tickets</h3>
+          <p class="summary">The decomposition step. It converts a spec or plan into implementation tickets that can be executed one at a time.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>A spec exists and the next need is a sequence of concrete, testable work slices.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Tracer-bullet tickets with blockers, dependencies, expected behavior, and verification guidance.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>implement, often one ticket per Codex thread or one small batch per focused session.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-triage" class="skill-card amber">
+          <h3><span class="num">B</span> triage</h3>
+          <p class="summary">The intake skill. It moves issues and external PRs through a clear state machine until each item is actionable or rejected.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>Incoming work needs categorization, reproduction, clarification, or an agent-ready brief.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Verified issue state, labels, notes, and a clear next action for planning or implementation.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grilling if unclear, diagnosing-bugs if broken behavior is involved, or implement when ready.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-diagnosing-bugs" class="skill-card red">
+          <h3><span class="num">C</span> diagnosing-bugs</h3>
+          <p class="summary">The debugging loop. It protects implementation from guesswork by first reproducing and explaining the failure.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>Something is broken, slow, flaky, throwing, failing tests, or behaving differently than expected.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A reproducible failure, narrowed cause, fix strategy, and verification plan.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>implement for the fix, then tdd or code-review to lock in regression protection.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-improve-codebase-architecture" class="skill-card violet">
+          <h3><span class="num">D</span> improve-codebase-architecture</h3>
+          <p class="summary">The architecture improvement scout. It looks across a codebase for opportunities to create deeper modules and cleaner boundaries.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>The product works, but the code is getting harder to change, test, or reason about.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A visual report of improvement candidates and a selected path for deeper design work.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>codebase-design, grill-with-docs, to-spec, or to-tickets depending on the size of the improvement.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-implement" class="skill-card violet">
+          <h3><span class="num">4</span> implement</h3>
+          <p class="summary">The delivery skill. It executes a spec or ticket while respecting the repo's patterns, tests, and verification expectations.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>A ticket, spec slice, or bug-fix plan is ready to build.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Code changes, focused tests, verification results, and a clear account of what changed.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>code-review, or back to diagnosing-bugs if verification reveals a deeper failure.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-tdd" class="skill-card violet">
+          <h3><span class="num">T</span> tdd</h3>
+          <p class="summary">The test-first discipline. It gives implementation a red-green-refactor loop when behavior can be specified before code is changed.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>Building features or fixing bugs where tests can describe the expected behavior or regression.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A failing test first, a minimal implementation to pass it, and a refactor after behavior is protected.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>implement during build work, then code-review for standards and spec alignment.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-code-review" class="skill-card blue">
+          <h3><span class="num">5</span> code-review</h3>
+          <p class="summary">The quality gate. It reviews the diff against both the repo's engineering standards and the promise made in the spec or ticket.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>A branch, PR, or work-in-progress diff needs review before merge or before continuing.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Findings ordered by severity, grounded in file and line references, plus any residual risk or test gaps.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>implement for fixes, or to final merge/release work if the review is clean.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-codex-handoff" class="skill-card setup">
+          <h3><span class="num">H</span> codex-handoff</h3>
+          <p class="summary">The context-transfer skill. It prepares a fresh Codex thread to continue the work without dragging the whole conversation along.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>The current thread is long, the work should continue elsewhere, or a forked Codex thread should pick up a specific task.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A concise, redacted summary of goal, context, decisions, completed work, verification, remaining work, and next action.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>A forked or new Codex thread that can continue from the summary and invoke the right next skill.</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Covers the installed Engineering Workflow skill set in <span class="path">C:\Users\yevge\.codex\skills</span>. This guide intentionally excludes unrelated provider-specific skills such as Cloudflare, Supabase, Gmail, Canva, and Figma.
+    </footer>
+  </main>
+</body>
+</html>

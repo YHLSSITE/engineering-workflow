@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Handoff"
+  short_description: "Hand work to a fresh Codex thread"
+  default_prompt: "Use $codex-handoff to continue this work in a fresh Codex thread."
