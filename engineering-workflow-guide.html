@@ -162,21 +162,6 @@
       color: var(--muted);
     }
 
-    .digest-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .start-here {
-      display: grid;
-      grid-template-columns: 0.95fr 1.25fr;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .digest-card,
-    .start-card,
     .flow-node,
     .skill-card,
     .rule-card {
@@ -184,85 +169,6 @@
       border-radius: var(--radius);
       background: var(--paper);
       box-shadow: var(--shadow);
-    }
-
-    .start-card {
-      min-height: 150px;
-      padding: 18px;
-      border-width: 2px;
-      border-color: var(--navy);
-      background:
-        linear-gradient(180deg, #ffffff 0, #eef5ff 100%);
-    }
-
-    .start-card.primary {
-      border-color: var(--green);
-      background:
-        linear-gradient(180deg, #ffffff 0, #eefaf3 100%);
-    }
-
-    .start-card .step-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      margin-bottom: 12px;
-      padding: 4px 9px;
-      border-radius: 6px;
-      background: var(--navy);
-      color: #fff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0;
-    }
-
-    .start-card.primary .step-tag {
-      background: var(--green);
-    }
-
-    .start-card strong {
-      display: block;
-      color: var(--navy);
-      font-size: 1.04rem;
-      overflow-wrap: anywhere;
-    }
-
-    .start-card p {
-      margin: 9px 0 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .digest-card {
-      min-height: 132px;
-      padding: 16px;
-      border-top: 4px solid var(--blue);
-    }
-
-    .digest-card:nth-child(2) {
-      border-top-color: var(--green);
-    }
-
-    .digest-card:nth-child(3) {
-      border-top-color: var(--amber);
-    }
-
-    .digest-card:nth-child(4) {
-      border-top-color: var(--violet);
-    }
-
-    .digest-card strong {
-      display: block;
-      margin-bottom: 7px;
-      color: var(--navy);
-      font-size: 0.98rem;
-      overflow-wrap: anywhere;
-    }
-
-    .digest-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.93rem;
     }
 
     .diagram-wrap {
@@ -671,8 +577,6 @@
     }
 
     @media (max-width: 920px) {
-      .digest-grid,
-      .start-here,
       .rules-grid,
       .skills-grid {
         grid-template-columns: 1fr;
@@ -807,7 +711,6 @@
       ticket, implement, and review.
     </p>
     <nav class="quick-nav" aria-label="Page sections">
-      <a href="#digest">Workflow Digest</a>
       <a href="#diagram">Diagram</a>
       <a href="#rules">Operating Rules</a>
       <a href="#skills">Skill Details</a>
@@ -815,45 +718,6 @@
   </header>
 
   <main id="main" class="shell">
-    <section id="digest" aria-labelledby="digest-title">
-      <div class="section-head">
-        <h2 id="digest-title">Workflow Digest</h2>
-        <p>Start a new repository with the one-time setup skill. Start every real product effort with the numbered main delivery path. The other skills are support lanes for special situations.</p>
-      </div>
-
-      <div class="start-here">
-        <article class="start-card">
-          <span class="step-tag">First time in a repo</span>
-          <strong>Run <a class="path" href="#skill-setup-engineering-workflow">setup-engineering-workflow</a> once.</strong>
-          <p>This prepares labels, tracker vocabulary, and domain documentation locations. After that, it should not be part of every feature loop.</p>
-        </article>
-        <article class="start-card primary">
-          <span class="step-tag">First step for project work</span>
-          <strong>Begin with <a class="path" href="#skill-grill-with-docs">grill-with-docs</a>.</strong>
-          <p>This is step 1 of the main workflow. It turns a loose idea into a defensible plan before specs, tickets, implementation, or review.</p>
-        </article>
-      </div>
-
-      <div class="digest-grid">
-        <article class="digest-card">
-          <strong>1. Sharpen the idea</strong>
-          <p>Use <a class="path" href="#skill-grill-with-docs">grill-with-docs</a> as the default front door. It asks hard questions and records decisions while the plan becomes crisp.</p>
-        </article>
-        <article class="digest-card">
-          <strong>2. Write the spec</strong>
-          <p>Use <a class="path" href="#skill-to-spec">to-spec</a> to capture the product-level contract, scope, requirements, and acceptance criteria.</p>
-        </article>
-        <article class="digest-card">
-          <strong>3. Create the tickets</strong>
-          <p>Use <a class="path" href="#skill-to-tickets">to-tickets</a> for tracer-bullet implementation slices with blockers and verification notes.</p>
-        </article>
-        <article class="digest-card">
-          <strong>4-5. Build and review</strong>
-          <p>Use <a class="path" href="#skill-implement">implement</a>, bring in <a class="path" href="#skill-tdd">tdd</a> where possible, then run <a class="path" href="#skill-code-review">code-review</a> against the spec and standards.</p>
-        </article>
-      </div>
-    </section>
-
     <section id="diagram" aria-labelledby="diagram-title">
       <div class="section-head">
         <h2 id="diagram-title">Workflow Diagram</h2>
