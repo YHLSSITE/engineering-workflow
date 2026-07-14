@@ -295,6 +295,22 @@
       grid-column: span 2;
     }
 
+    .component-skills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .component-skills strong {
+      margin-right: 2px;
+      color: var(--navy);
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
     .flow-row.mainline .flow-node:not(:last-child)::after {
       content: "";
       position: absolute;
@@ -778,7 +794,7 @@
         <p>Read this top-down when starting work: one-time repo setup first, then the primary delivery path. Optional lanes sit below the main path.</p>
       </div>
 
-      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to a single deliver-ticket loop for each frontier ticket, followed by optional support lanes and handoff.">
+      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to a single deliver-ticket loop for each frontier ticket. Deliver-ticket internally uses implement, tdd, and code-review. Optional support lanes and handoff follow below.">
         <div class="flow-map">
           <div class="lane-label">Start here for a new repo</div>
           <div class="flow-row single">
@@ -814,6 +830,12 @@
               <div class="kicker"><span class="num">4</span> Ticket loop</div>
               <h3><a href="#skill-deliver-ticket">deliver-ticket</a></h3>
               <p>One normal prompt per ticket. It chooses or accepts a frontier ticket, branches, implements with TDD where useful, checks, commits, reviews, opens the PR, and finalizes when the repo state allows it.</p>
+              <p class="component-skills">
+                <strong>Uses internally</strong>
+                <a class="path" href="#skill-implement">implement</a>
+                <a class="path" href="#skill-tdd">tdd</a>
+                <a class="path" href="#skill-code-review">code-review</a>
+              </p>
             </article>
           </div>
 
@@ -822,7 +844,7 @@
               <span class="loop-mark" aria-hidden="true">Loop</span>
               <div>
                 <strong>Run once per frontier ticket</strong>
-                <p>Use <span class="path">deliver-ticket</span> for <span class="path">Ticket #N</span>. If CI, review, or merge approval is still pending, the skill stops at the PR and tells you to run <span class="path">deliver-ticket</span> later only to finalize that same ticket.</p>
+                <p>Use <a class="path" href="#skill-deliver-ticket">deliver-ticket</a> for <span class="path">Ticket #N</span>. If CI, review, or merge approval is still pending, the skill stops at the PR and tells you to run <a class="path" href="#skill-deliver-ticket">deliver-ticket</a> later only to finalize that same ticket.</p>
               </div>
             </div>
           </div>
