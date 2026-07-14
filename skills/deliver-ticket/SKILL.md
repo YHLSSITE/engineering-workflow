@@ -77,8 +77,11 @@ Use this branch only when the user asks to finalize, merge, or complete an alrea
 1. Check the PR, CI, review state, and ticket status.
 2. If anything is not green, diagnose it, fix it on the same branch, rerun checks, commit, and push.
 3. If green, merge according to repo policy and mark the ticket complete.
-4. Return to a clean, synced main branch when that is the repo convention.
+4. Clean up ticket labels before or when closing the ticket:
+   - Remove the AFK-ready label, normally `ready-for-agent` unless `docs/agents/triage-labels.md` maps it differently.
+   - Add the completion label, normally `completed` unless `docs/agents/triage-labels.md` maps it differently.
+5. Return to a clean, synced main branch when that is the repo convention.
 
-Completion criterion: the ticket is merged and marked complete, or the blocker is named with the next concrete action.
+Completion criterion: the ticket is merged and marked complete, `ready-for-agent` is gone, `completed` is present, or the blocker is named with the next concrete action.
 
 Stop after finalizing this ticket. Return to ticket selection only when the user asks for the next ticket.

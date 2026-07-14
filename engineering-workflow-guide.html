@@ -1071,7 +1071,7 @@
           <p class="summary">The ticket delivery loop. It wraps the repeated branch, implementation, TDD, verification, review, PR, and finalization steps for exactly one ticket.</p>
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A ticket is ready to build, a next frontier ticket needs to be chosen, or an existing ticket PR needs finalization.</dd></div>
-            <div class="fact"><dt>Output</dt><dd>A delivered ticket branch and PR, or a finalized ticket with merge/completion status and remaining blocker if any.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A delivered ticket branch and PR, or a finalized ticket marked <span class="path">completed</span> with <span class="path">ready-for-agent</span> removed.</dd></div>
             <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-implement">implement</a> <a class="path" href="#skill-tdd">tdd</a> <a class="path" href="#skill-code-review">code-review</a></dd></div>
             <div class="fact"><dt>Delegates</dt><dd>Read-only investigation, test-seam analysis, risk scans, and review can go to sub-agents; branch mutation stays in the main agent.</dd></div>
             <div class="fact"><dt>Hands to</dt><dd>Ticket selection after the current ticket is complete.</dd></div>
