@@ -815,6 +815,11 @@
               <div class="kicker"><span class="num">1</span> Sharpen</div>
               <h3><a href="#skill-grill-with-docs">grill-with-docs</a></h3>
               <p>Convert an idea into a defensible plan with recorded terminology and decisions.</p>
+              <p class="component-skills">
+                <strong>Uses internally</strong>
+                <a class="path" href="#skill-grilling">grilling</a>
+                <a class="path" href="#skill-domain-modeling">domain-modeling</a>
+              </p>
             </article>
             <article class="flow-node amber">
               <div class="kicker"><span class="num">2</span> Specify</div>
@@ -855,11 +860,22 @@
               <div class="kicker"><span class="num">A</span> Huge or foggy</div>
               <h3><a href="#skill-wayfinder">wayfinder</a></h3>
               <p>Use before the main path when the work is too large or unknown for a single spec.</p>
+              <p class="component-skills">
+                <strong>Uses internally</strong>
+                <a class="path" href="#skill-grilling">grilling</a>
+                <a class="path" href="#skill-domain-modeling">domain-modeling</a>
+                <a class="path" href="#skill-prototype">prototype</a>
+              </p>
             </article>
             <article class="flow-node amber">
               <div class="kicker"><span class="num">B</span> Raw intake</div>
               <h3><a href="#skill-triage">triage</a></h3>
               <p>Use when incoming issues or external PRs need categorizing, verification, or an agent-ready brief.</p>
+              <p class="component-skills">
+                <strong>Uses internally</strong>
+                <a class="path" href="#skill-grilling">grilling</a>
+                <a class="path" href="#skill-domain-modeling">domain-modeling</a>
+              </p>
             </article>
             <article class="flow-node red">
               <div class="kicker"><span class="num">C</span> Broken behavior</div>
@@ -870,6 +886,12 @@
               <div class="kicker"><span class="num">D</span> Code health</div>
               <h3><a href="#skill-improve-codebase-architecture">improve-codebase-architecture</a></h3>
               <p>Use when the starting point is architecture debt rather than a product feature.</p>
+              <p class="component-skills">
+                <strong>Uses internally</strong>
+                <a class="path" href="#skill-codebase-design">codebase-design</a>
+                <a class="path" href="#skill-grilling">grilling</a>
+                <a class="path" href="#skill-domain-modeling">domain-modeling</a>
+              </p>
             </article>
           </div>
 
@@ -958,6 +980,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>The destination is clear enough to care about, but the route requires investigation across multiple sessions.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A map of investigation tickets and a path toward a spec once enough unknowns are resolved.</dd></div>
+            <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a> <a class="path" href="#skill-prototype">prototype</a> as needed by each investigation ticket.</dd></div>
             <div class="fact"><dt>Hands to</dt><dd>research, prototype, grill-with-docs, or to-spec depending on what each investigation finds.</dd></div>
           </dl>
         </article>
@@ -968,6 +991,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>You have an idea, plan, or design that needs pressure before it becomes a spec.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Clarified scope, assumptions, risks, glossary updates, and architectural decision records where useful.</dd></div>
+            <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a></dd></div>
             <div class="fact"><dt>Hands to</dt><dd>to-spec when the plan is crisp, or research/prototype/codebase-design if unanswered risks remain.</dd></div>
           </dl>
         </article>
@@ -1048,7 +1072,8 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A ticket is ready to build, a next frontier ticket needs to be chosen, or an existing ticket PR needs finalization.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A delivered ticket branch and PR, or a finalized ticket with merge/completion status and remaining blocker if any.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>implement, tdd, and code-review internally; then back to ticket selection after the current ticket is complete.</dd></div>
+            <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-implement">implement</a> <a class="path" href="#skill-tdd">tdd</a> <a class="path" href="#skill-code-review">code-review</a></dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>Ticket selection after the current ticket is complete.</dd></div>
           </dl>
         </article>
 
@@ -1058,6 +1083,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>Incoming work needs categorization, reproduction, clarification, or an agent-ready brief.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Verified issue state, labels, notes, and a clear next action for planning or implementation.</dd></div>
+            <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a> when an item needs clarification.</dd></div>
             <div class="fact"><dt>Hands to</dt><dd>grilling if unclear, diagnosing-bugs if broken behavior is involved, or deliver-ticket when ready.</dd></div>
           </dl>
         </article>
@@ -1078,6 +1104,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>The product works, but the code is getting harder to change, test, or reason about.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A visual report of improvement candidates and a selected path for deeper design work.</dd></div>
+            <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-codebase-design">codebase-design</a> <a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a></dd></div>
             <div class="fact"><dt>Hands to</dt><dd>codebase-design, grill-with-docs, to-spec, or to-tickets depending on the size of the improvement.</dd></div>
           </dl>
         </article>
@@ -1088,6 +1115,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A ticket, spec slice, or bug-fix plan is ready to build.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Code changes, focused tests, verification results, and a clear account of what changed.</dd></div>
+            <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-tdd">tdd</a> where practical, and <a class="path" href="#skill-code-review">code-review</a> when used standalone.</dd></div>
             <div class="fact"><dt>Hands to</dt><dd>deliver-ticket for review, PR, and finalization, or diagnosing-bugs if verification reveals a deeper failure.</dd></div>
           </dl>
         </article>
