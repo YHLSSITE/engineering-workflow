@@ -10,8 +10,8 @@ For a new repository:
 2. Start project work with `grill-with-docs`.
 3. Continue through `to-spec`.
 4. Break work down with `to-tickets`.
-5. Build with `implement`, using `tdd` where useful.
-6. Review with `code-review`.
+5. Deliver one ticket at a time with `deliver-ticket`.
+6. Repeat ticket selection only after the current ticket is finalized.
 
 Open `engineering-workflow-guide.html` for the full clickable workflow guide.
 
@@ -23,6 +23,7 @@ The workflow skills are stored under `skills/`:
 - `grill-with-docs`
 - `to-spec`
 - `to-tickets`
+- `deliver-ticket`
 - `implement`
 - `tdd`
 - `code-review`
@@ -46,8 +47,9 @@ setup-engineering-workflow, once per repo
   -> grill-with-docs
   -> to-spec
   -> to-tickets
-  -> implement + tdd
-  -> code-review
+  -> deliver-ticket
+       -> implement + tdd + code-review + PR/finalize
+       -> repeat for the next eligible ticket
 ```
 
 Use the support skills when the work calls for them:

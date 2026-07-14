@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deliver Ticket"
+  short_description: "Run the complete ticket delivery loop"
+  default_prompt: "Use $deliver-ticket for Ticket #N and stop after the PR is opened."

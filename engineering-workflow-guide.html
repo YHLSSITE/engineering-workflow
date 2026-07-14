@@ -700,7 +700,7 @@
     <p class="lede">
       A practical map for using the installed Engineering Workflow skill set. For a new repo,
       run setup once. For project work, start at step 1 with grill-with-docs, then specify,
-      ticket, implement, and review.
+      ticket, and deliver one ticket at a time.
     </p>
     <nav class="quick-nav" aria-label="Page sections">
       <a href="#diagram">Diagram</a>
@@ -716,7 +716,7 @@
         <p>Read this top-down when starting work: one-time repo setup first, then the primary delivery path. Optional lanes sit below the main path.</p>
       </div>
 
-      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to code-review, followed by optional support lanes and handoff.">
+      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to deliver-ticket, followed by optional support lanes and handoff.">
         <div class="flow-map">
           <div class="lane-label">Start here for a new repo</div>
           <div class="flow-row single">
@@ -749,14 +749,14 @@
               <p>Create tracer-bullet tickets with blocking edges and clear expected outcomes.</p>
             </article>
             <article class="flow-node violet">
-              <div class="kicker"><span class="num">4</span> Build</div>
-              <h3><a href="#skill-implement">implement</a> + <a href="#skill-tdd">tdd</a></h3>
-              <p>Implement one ticket or spec slice, using tests first where the risk justifies it.</p>
+              <div class="kicker"><span class="num">4</span> Deliver ticket</div>
+              <h3><a href="#skill-deliver-ticket">deliver-ticket</a></h3>
+              <p>Choose or accept one frontier ticket, branch, implement with TDD where useful, check, commit, review, and open the PR.</p>
             </article>
             <article class="flow-node blue">
-              <div class="kicker"><span class="num">5</span> Review</div>
-              <h3><a href="#skill-code-review">code-review</a></h3>
-              <p>Review the diff against both repo standards and the originating spec before merge.</p>
+              <div class="kicker"><span class="num">5</span> Finalize ticket</div>
+              <h3><a href="#skill-deliver-ticket">deliver-ticket</a></h3>
+              <p>After PR checks are ready, fix any failures, merge or mark complete, then return to ticket selection.</p>
             </article>
           </div>
 
@@ -820,7 +820,7 @@
       </div>
 
       <p class="diagram-note">
-        To start a new project in an already prepared repo, begin at step 1: grill-with-docs. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. The optional lanes below the main path feed back into planning, specification, or implementation when the work needs extra clarity.
+        To start a new project in an already prepared repo, begin at step 1: grill-with-docs. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. After to-tickets, use deliver-ticket for one frontier ticket at a time: deliver it to PR, finalize that same ticket when checks are ready, then return to ticket selection.
       </p>
     </section>
 
@@ -837,11 +837,11 @@
         </article>
         <article class="rule-card">
           <h3>Keep tickets independently shippable</h3>
-          <p>Each ticket should have a clear user or system outcome, known blockers, verification steps, and enough context for a fresh Codex thread.</p>
+          <p>Each ticket should have a clear user or system outcome, known blockers, verification steps, and enough context for deliver-ticket to run in a focused Codex thread.</p>
         </article>
         <article class="rule-card">
           <h3>Review against the promise</h3>
-          <p>Code review is not just style review. It should check whether the implementation actually matches the spec, ticket, and project standards.</p>
+          <p>deliver-ticket uses code-review as the gate: standards and spec alignment both need to be checked before a ticket is finalized.</p>
         </article>
       </div>
     </section>
@@ -909,7 +909,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>External docs, APIs, product behavior, legal constraints, standards, or current facts affect the design.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A Markdown research note with findings, sources, and implications for the work.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs, to-spec, prototype, or implement depending on whether the finding changes design or execution.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs, to-spec, prototype, or deliver-ticket depending on whether the finding changes design or execution.</dd></div>
           </dl>
         </article>
 
@@ -929,7 +929,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>You are designing or improving an API, making code more testable, or deciding how a feature should fit the existing architecture.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Clearer module boundaries, simpler interfaces, and implementation guidance for maintainable code.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>to-spec, to-tickets, implement, or improve-codebase-architecture for broader architecture work.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>to-spec, to-tickets, deliver-ticket, or improve-codebase-architecture for broader architecture work.</dd></div>
           </dl>
         </article>
 
@@ -949,7 +949,17 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A spec exists and the next need is a sequence of concrete, testable work slices.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Tracer-bullet tickets with blockers, dependencies, expected behavior, and verification guidance.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>implement, often one ticket per Codex thread or one small batch per focused session.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>deliver-ticket, one frontier ticket at a time.</dd></div>
+          </dl>
+        </article>
+
+        <article id="skill-deliver-ticket" class="skill-card violet">
+          <h3><span class="num">4</span> deliver-ticket</h3>
+          <p class="summary">The ticket delivery loop. It wraps the repeated branch, implementation, TDD, verification, review, PR, and finalization steps for exactly one ticket.</p>
+          <dl>
+            <div class="fact"><dt>Use when</dt><dd>A ticket is ready to build, a next frontier ticket needs to be chosen, or an existing ticket PR needs finalization.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>A delivered ticket branch and PR, or a finalized ticket with merge/completion status and remaining blocker if any.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>implement, tdd, and code-review internally; then back to ticket selection after the current ticket is complete.</dd></div>
           </dl>
         </article>
 
@@ -959,7 +969,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>Incoming work needs categorization, reproduction, clarification, or an agent-ready brief.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Verified issue state, labels, notes, and a clear next action for planning or implementation.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>grilling if unclear, diagnosing-bugs if broken behavior is involved, or implement when ready.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>grilling if unclear, diagnosing-bugs if broken behavior is involved, or deliver-ticket when ready.</dd></div>
           </dl>
         </article>
 
@@ -969,7 +979,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>Something is broken, slow, flaky, throwing, failing tests, or behaving differently than expected.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A reproducible failure, narrowed cause, fix strategy, and verification plan.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>implement for the fix, then tdd or code-review to lock in regression protection.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>deliver-ticket for the fix when the bug has been turned into an agent-ready ticket.</dd></div>
           </dl>
         </article>
 
@@ -984,12 +994,12 @@
         </article>
 
         <article id="skill-implement" class="skill-card violet">
-          <h3><span class="num">4</span> implement</h3>
-          <p class="summary">The delivery skill. It executes a spec or ticket while respecting the repo's patterns, tests, and verification expectations.</p>
+          <h3><span class="num">I</span> implement</h3>
+          <p class="summary">The build component inside the ticket loop. It executes a spec or ticket while respecting the repo's patterns, tests, and verification expectations.</p>
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A ticket, spec slice, or bug-fix plan is ready to build.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Code changes, focused tests, verification results, and a clear account of what changed.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>code-review, or back to diagnosing-bugs if verification reveals a deeper failure.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>deliver-ticket for review, PR, and finalization, or diagnosing-bugs if verification reveals a deeper failure.</dd></div>
           </dl>
         </article>
 
@@ -999,17 +1009,17 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>Building features or fixing bugs where tests can describe the expected behavior or regression.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A failing test first, a minimal implementation to pass it, and a refactor after behavior is protected.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>implement during build work, then code-review for standards and spec alignment.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>deliver-ticket during ticket delivery, then code-review for standards and spec alignment.</dd></div>
           </dl>
         </article>
 
         <article id="skill-code-review" class="skill-card blue">
-          <h3><span class="num">5</span> code-review</h3>
-          <p class="summary">The quality gate. It reviews the diff against both the repo's engineering standards and the promise made in the spec or ticket.</p>
+          <h3><span class="num">R</span> code-review</h3>
+          <p class="summary">The quality gate inside the ticket loop. It reviews the diff against both the repo's engineering standards and the promise made in the spec or ticket.</p>
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A branch, PR, or work-in-progress diff needs review before merge or before continuing.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Findings ordered by severity, grounded in file and line references, plus any residual risk or test gaps.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>implement for fixes, or to final merge/release work if the review is clean.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>deliver-ticket for fixes, PR publication, or final merge work after the review is clean.</dd></div>
           </dl>
         </article>
 
