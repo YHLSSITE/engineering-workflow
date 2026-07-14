@@ -291,6 +291,10 @@
       font-size: 1rem;
     }
 
+    .flow-row.mainline .flow-node.ticket-loop-node {
+      grid-column: span 2;
+    }
+
     .flow-row.mainline .flow-node:not(:last-child)::after {
       content: "";
       position: absolute;
@@ -670,6 +674,10 @@
         padding: 16px;
       }
 
+      .flow-row.mainline .flow-node.ticket-loop-node {
+        grid-column: auto;
+      }
+
       .flow-row.mainline .flow-node:not(:last-child)::after {
         top: auto;
         right: auto;
@@ -770,7 +778,7 @@
         <p>Read this top-down when starting work: one-time repo setup first, then the primary delivery path. Optional lanes sit below the main path.</p>
       </div>
 
-      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to deliver-ticket, with a ticket loop that repeats delivery and finalization for each frontier ticket, followed by optional support lanes and handoff.">
+      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to a single deliver-ticket loop for each frontier ticket, followed by optional support lanes and handoff.">
         <div class="flow-map">
           <div class="lane-label">Start here for a new repo</div>
           <div class="flow-row single">
@@ -802,24 +810,19 @@
               <h3><a href="#skill-to-tickets">to-tickets</a></h3>
               <p>Create tracer-bullet tickets with blocking edges and clear expected outcomes.</p>
             </article>
-            <article class="flow-node violet">
-              <div class="kicker"><span class="num">4</span> Deliver ticket</div>
+            <article class="flow-node violet ticket-loop-node">
+              <div class="kicker"><span class="num">4</span> Ticket loop</div>
               <h3><a href="#skill-deliver-ticket">deliver-ticket</a></h3>
-              <p>Choose or accept one frontier ticket, branch, implement with TDD where useful, check, commit, review, and open the PR.</p>
-            </article>
-            <article class="flow-node blue">
-              <div class="kicker"><span class="num">5</span> Finalize ticket</div>
-              <h3><a href="#skill-deliver-ticket">deliver-ticket</a></h3>
-              <p>After PR checks are ready, fix any failures, merge or mark complete, then return to ticket selection.</p>
+              <p>One normal prompt per ticket. It chooses or accepts a frontier ticket, branches, implements with TDD where useful, checks, commits, reviews, opens the PR, and finalizes when the repo state allows it.</p>
             </article>
           </div>
 
-          <div class="ticket-loop" aria-label="Ticket loop repeats steps 4 and 5 for each frontier ticket">
+          <div class="ticket-loop" aria-label="Ticket loop runs once per frontier ticket, with a later finalization run only if external checks or approval are pending">
             <div class="ticket-loop-inner">
               <span class="loop-mark" aria-hidden="true">Loop</span>
               <div>
-                <strong>Repeat for each frontier ticket</strong>
-                <p>Run step 4 to deliver one ticket to PR, run step 5 to finalize that same ticket, then choose the next unblocked ticket and repeat.</p>
+                <strong>Run once per frontier ticket</strong>
+                <p>Use <span class="path">deliver-ticket</span> for <span class="path">Ticket #N</span>. If CI, review, or merge approval is still pending, the skill stops at the PR and tells you to run <span class="path">deliver-ticket</span> later only to finalize that same ticket.</p>
               </div>
             </div>
           </div>
@@ -884,7 +887,7 @@
       </div>
 
       <p class="diagram-note">
-        To start a new project in an already prepared repo, begin at step 1: grill-with-docs. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. After to-tickets, use deliver-ticket for one frontier ticket at a time: deliver it to PR, finalize that same ticket when checks are ready, then return to ticket selection.
+        To start a new project in an already prepared repo, begin at step 1: grill-with-docs. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. After to-tickets, use deliver-ticket for one frontier ticket at a time. A second deliver-ticket prompt is only needed when the first run had to wait for external PR checks, review, or merge permission.
       </p>
     </section>
 
@@ -897,7 +900,7 @@
       <div class="rules-grid">
         <article class="rule-card">
           <h3>Loop one ticket at a time</h3>
-          <p>After to-tickets, repeat deliver-ticket for one frontier ticket, finalize it, then choose the next unblocked ticket. Do not roll into the next ticket automatically.</p>
+          <p>After to-tickets, use deliver-ticket for one frontier ticket. When that ticket is complete, choose the next unblocked ticket. Do not roll into the next ticket automatically.</p>
         </article>
         <article class="rule-card">
           <h3>Keep tickets independently shippable</h3>
