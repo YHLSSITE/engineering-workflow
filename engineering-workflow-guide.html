@@ -317,6 +317,51 @@
       transform: translateY(-50%);
     }
 
+    .ticket-loop {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: -8px 16px 24px;
+    }
+
+    .ticket-loop-inner {
+      grid-column: 4 / span 2;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border: 2px dashed var(--violet);
+      border-radius: var(--radius);
+      background: #fbf7ff;
+      color: var(--navy);
+    }
+
+    .loop-mark {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      min-width: 38px;
+      min-height: 38px;
+      border-radius: 999px;
+      background: var(--violet);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .ticket-loop strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.2;
+    }
+
+    .ticket-loop p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
     .num {
       display: inline-grid;
       place-items: center;
@@ -597,7 +642,8 @@
 
       .flow-row.entry,
       .flow-row.support,
-      .flow-row.mainline {
+      .flow-row.mainline,
+      .ticket-loop {
         grid-template-columns: 1fr;
       }
 
@@ -605,6 +651,14 @@
         gap: 34px;
         margin: 12px 0 20px;
         padding: 12px;
+      }
+
+      .ticket-loop {
+        margin: -4px 12px 24px;
+      }
+
+      .ticket-loop-inner {
+        grid-column: auto;
       }
 
       .flow-node,
@@ -716,7 +770,7 @@
         <p>Read this top-down when starting work: one-time repo setup first, then the primary delivery path. Optional lanes sit below the main path.</p>
       </div>
 
-      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to deliver-ticket, followed by optional support lanes and handoff.">
+      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to deliver-ticket, with a ticket loop that repeats delivery and finalization for each frontier ticket, followed by optional support lanes and handoff.">
         <div class="flow-map">
           <div class="lane-label">Start here for a new repo</div>
           <div class="flow-row single">
@@ -758,6 +812,16 @@
               <h3><a href="#skill-deliver-ticket">deliver-ticket</a></h3>
               <p>After PR checks are ready, fix any failures, merge or mark complete, then return to ticket selection.</p>
             </article>
+          </div>
+
+          <div class="ticket-loop" aria-label="Ticket loop repeats steps 4 and 5 for each frontier ticket">
+            <div class="ticket-loop-inner">
+              <span class="loop-mark" aria-hidden="true">Loop</span>
+              <div>
+                <strong>Repeat for each frontier ticket</strong>
+                <p>Run step 4 to deliver one ticket to PR, run step 5 to finalize that same ticket, then choose the next unblocked ticket and repeat.</p>
+              </div>
+            </div>
           </div>
 
           <div class="lane-label">Alternate on-ramps for special cases</div>
@@ -832,8 +896,8 @@
 
       <div class="rules-grid">
         <article class="rule-card">
-          <h3>Use the smallest useful loop</h3>
-          <p>Do not force every idea through every support skill. Use research, prototype, codebase-design, or wayfinder only when they reduce real uncertainty.</p>
+          <h3>Loop one ticket at a time</h3>
+          <p>After to-tickets, repeat deliver-ticket for one frontier ticket, finalize it, then choose the next unblocked ticket. Do not roll into the next ticket automatically.</p>
         </article>
         <article class="rule-card">
           <h3>Keep tickets independently shippable</h3>
