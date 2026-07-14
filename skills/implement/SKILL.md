@@ -9,6 +9,6 @@ Use /tdd where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-Once done, use /code-review to review the work.
+Once done, return to `/deliver-ticket` for review, PR publication, and finalization. If this skill is used standalone, use `/code-review` before finalizing.
 
 Commit your work to the current branch.
