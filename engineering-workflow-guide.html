@@ -1073,6 +1073,7 @@
             <div class="fact"><dt>Use when</dt><dd>A ticket is ready to build, a next frontier ticket needs to be chosen, or an existing ticket PR needs finalization.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A delivered ticket branch and PR, or a finalized ticket with merge/completion status and remaining blocker if any.</dd></div>
             <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-implement">implement</a> <a class="path" href="#skill-tdd">tdd</a> <a class="path" href="#skill-code-review">code-review</a></dd></div>
+            <div class="fact"><dt>Delegates</dt><dd>Read-only investigation, test-seam analysis, risk scans, and review can go to sub-agents; branch mutation stays in the main agent.</dd></div>
             <div class="fact"><dt>Hands to</dt><dd>Ticket selection after the current ticket is complete.</dd></div>
           </dl>
         </article>
@@ -1116,6 +1117,7 @@
             <div class="fact"><dt>Use when</dt><dd>A ticket, spec slice, or bug-fix plan is ready to build.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Code changes, focused tests, verification results, and a clear account of what changed.</dd></div>
             <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-tdd">tdd</a> where practical, and <a class="path" href="#skill-code-review">code-review</a> when used standalone.</dd></div>
+            <div class="fact"><dt>Delegates</dt><dd>Read-only reconnaissance, test planning, standards lookup, and risk scans when independent enough to parallelize.</dd></div>
             <div class="fact"><dt>Hands to</dt><dd>deliver-ticket for review, PR, and finalization, or diagnosing-bugs if verification reveals a deeper failure.</dd></div>
           </dl>
         </article>

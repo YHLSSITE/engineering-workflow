@@ -7,6 +7,10 @@ description: Run one Engineering Workflow ticket through the delivery loop. Use 
 
 Deliver exactly one ticket through a controlled loop. This skill orchestrates `implement`, `tdd`, and `code-review`; it does not replace their detailed instructions.
 
+## Delegation
+
+Use sub-agents when independent work can run in parallel without mutating the branch: ticket/spec cross-checks, codebase reconnaissance, test seam proposals, risk scans, or focused review of a tricky area. Keep branch creation, code edits, commits, pushes, merges, and final scope decisions in the main agent. If sub-agents are unavailable, do the work inline and report that fallback.
+
 ## Branches
 
 ### 1. No Ticket Chosen
@@ -38,6 +42,7 @@ Use this branch when the user names a ticket to implement or deliver.
 3. Implement the ticket.
    - Use `implement` for the ticket work.
    - Use `tdd` at agreed public seams where practical. If seams are missing and not obvious from the ticket, ask before writing tests.
+   - Delegate independent read-only investigation or test-seam analysis to sub-agents when it would reduce risk or latency.
    - Keep the slice vertical and limited to this ticket.
 
    Completion criterion: the ticket behavior is implemented and no next-ticket work is included.
@@ -51,7 +56,7 @@ Use this branch when the user names a ticket to implement or deliver.
 
 5. Review and fix.
    - Use `code-review` against `main` or the chosen base.
-   - If sub-agent review is unavailable, run the same two-axis review manually: Standards and Spec.
+   - `code-review` should run its Standards and Spec reviews in parallel sub-agents. If sub-agent review is unavailable, run the same two-axis review manually: Standards and Spec.
    - Fix blocking findings on the same branch, rerun relevant checks, and commit fixes.
 
    Completion criterion: review is clean or remaining findings are explicitly non-blocking.
