@@ -7,7 +7,7 @@ This repository packages a Codex-oriented Engineering Workflow skill set plus a 
 For a new repository:
 
 1. Run `setup-engineering-workflow` once.
-2. Start project work with `grill-with-docs`.
+2. Start project work with `project-shaping`.
 3. Continue through `to-spec`.
 4. Break work down with `to-tickets`.
 5. Deliver one ticket at a time with `deliver-ticket`.
@@ -20,7 +20,7 @@ Open `engineering-workflow-guide.html` for the full clickable workflow guide.
 The workflow skills are stored under `skills/`:
 
 - `setup-engineering-workflow`
-- `grill-with-docs`
+- `project-shaping`
 - `to-spec`
 - `to-tickets`
 - `deliver-ticket`
@@ -44,7 +44,7 @@ The main delivery path is:
 
 ```text
 setup-engineering-workflow, once per repo
-  -> grill-with-docs
+  -> project-shaping
   -> to-spec
   -> to-tickets
   -> deliver-ticket

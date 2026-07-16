@@ -777,7 +777,7 @@
     <h1>Engineering Workflow Skills Guide</h1>
     <p class="lede">
       A practical map for using the installed Engineering Workflow skill set. For a new repo,
-      run setup once. For project work, start at step 1 with grill-with-docs, then specify,
+      run setup once. For project work, start at step 1 with project-shaping, then specify,
       ticket, and deliver one ticket at a time.
     </p>
     <nav class="quick-nav" aria-label="Page sections">
@@ -794,7 +794,7 @@
         <p>Read this top-down when starting work: one-time repo setup first, then the primary delivery path. Optional lanes sit below the main path.</p>
       </div>
 
-      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from grill-with-docs to a single deliver-ticket loop for each frontier ticket. Deliver-ticket internally uses implement, tdd, and code-review. Optional support lanes and handoff follow below.">
+      <div class="diagram-wrap" role="img" aria-label="Engineering Workflow diagram starts with one-time setup, then the main delivery path from project-shaping to a single deliver-ticket loop for each frontier ticket. Deliver-ticket internally uses implement, tdd, and code-review. Optional support lanes and handoff follow below.">
         <div class="flow-map">
           <div class="lane-label">Start here for a new repo</div>
           <div class="flow-row single">
@@ -813,8 +813,8 @@
           <div class="flow-row mainline">
             <article class="flow-node green">
               <div class="kicker"><span class="num">1</span> Sharpen</div>
-              <h3><a href="#skill-grill-with-docs">grill-with-docs</a></h3>
-              <p>Convert an idea into a defensible plan with recorded terminology and decisions.</p>
+              <h3><a href="#skill-project-shaping">project-shaping</a></h3>
+              <p>Convert an idea into a defensible plan with recorded terminology, decisions, risks, and technical foundation.</p>
               <p class="component-skills">
                 <strong>Uses internally</strong>
                 <a class="path" href="#skill-grilling">grilling</a>
@@ -900,7 +900,7 @@
             <article class="flow-node green">
               <div class="kicker"><span class="num">S1</span> Fast pressure test</div>
               <h3><a href="#skill-grilling">grilling</a></h3>
-              <p>Use for a focused interview when you do not need the documentation output of grill-with-docs.</p>
+              <p>Use for a focused interview when you do not need the documentation output of project-shaping.</p>
             </article>
             <article class="flow-node teal">
               <div class="kicker"><span class="num">S2</span> Shared language</div>
@@ -931,7 +931,7 @@
       </div>
 
       <p class="diagram-note">
-        To start a new project in an already prepared repo, begin at step 1: grill-with-docs. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. After to-tickets, use deliver-ticket for one frontier ticket at a time. A second deliver-ticket prompt is only needed when the first run had to wait for external PR checks, review, or merge permission.
+        To start a new project in an already prepared repo, begin at step 1: project-shaping. To start in a repo that has never used this workflow, run setup-engineering-workflow once first, then move into step 1. After to-tickets, use deliver-ticket for one frontier ticket at a time. A second deliver-ticket prompt is only needed when the first run had to wait for external PR checks, review, or merge permission.
       </p>
     </section>
 
@@ -970,7 +970,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>Starting the workflow in a new repo or normalizing an existing repo before planning work.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Issue tracker conventions, triage labels, and a predictable domain-doc layout.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>Any planning or delivery skill, especially grill-with-docs, triage, to-spec, and to-tickets.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>Any planning or delivery skill, especially project-shaping, triage, to-spec, and to-tickets.</dd></div>
           </dl>
         </article>
 
@@ -981,16 +981,16 @@
             <div class="fact"><dt>Use when</dt><dd>The destination is clear enough to care about, but the route requires investigation across multiple sessions.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A map of investigation tickets and a path toward a spec once enough unknowns are resolved.</dd></div>
             <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a> <a class="path" href="#skill-prototype">prototype</a> as needed by each investigation ticket.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>research, prototype, grill-with-docs, or to-spec depending on what each investigation finds.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>research, prototype, project-shaping, or to-spec depending on what each investigation finds.</dd></div>
           </dl>
         </article>
 
-        <article id="skill-grill-with-docs" class="skill-card green">
-          <h3><span class="num">1</span> grill-with-docs</h3>
-          <p class="summary">The recommended default starting skill for a product idea or design. It sharpens the plan by asking hard questions and records the answers as durable docs.</p>
+        <article id="skill-project-shaping" class="skill-card green">
+          <h3><span class="num">1</span> project-shaping</h3>
+          <p class="summary">The recommended default starting skill for a product idea, new project, or design. It sharpens product intent, technical foundation, risks, and decisions before the work becomes a spec.</p>
           <dl>
-            <div class="fact"><dt>Use when</dt><dd>You have an idea, plan, or design that needs pressure before it becomes a spec.</dd></div>
-            <div class="fact"><dt>Output</dt><dd>Clarified scope, assumptions, risks, glossary updates, and architectural decision records where useful.</dd></div>
+            <div class="fact"><dt>Use when</dt><dd>You have an idea, plan, new project, or design that needs pressure before it becomes a spec.</dd></div>
+            <div class="fact"><dt>Output</dt><dd>Clarified scope, assumptions, risks, technical foundation, glossary updates, and architectural decision records where useful.</dd></div>
             <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a></dd></div>
             <div class="fact"><dt>Hands to</dt><dd>to-spec when the plan is crisp, or research/prototype/codebase-design if unanswered risks remain.</dd></div>
           </dl>
@@ -1002,7 +1002,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>You need a quick challenge session, or you want to stress-test a narrow plan before documenting it.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Sharper assumptions, exposed gaps, and clearer acceptance criteria.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs if the answers should become durable docs, or to-spec if enough clarity already exists.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>project-shaping if the answers should become durable docs, or to-spec if enough clarity already exists.</dd></div>
           </dl>
         </article>
 
@@ -1012,7 +1012,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>Terms are ambiguous, domain concepts are drifting, or a decision deserves a durable record.</dd></div>
             <div class="fact"><dt>Output</dt><dd>Glossary entries, canonical terms, clarified relationships, and architecture decision records.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs, to-spec, codebase-design, and implementation tickets that need shared language.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>project-shaping, to-spec, codebase-design, and implementation tickets that need shared language.</dd></div>
           </dl>
         </article>
 
@@ -1022,7 +1022,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>External docs, APIs, product behavior, legal constraints, standards, or current facts affect the design.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A Markdown research note with findings, sources, and implications for the work.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs, to-spec, prototype, or deliver-ticket depending on whether the finding changes design or execution.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>project-shaping, to-spec, prototype, or deliver-ticket depending on whether the finding changes design or execution.</dd></div>
           </dl>
         </article>
 
@@ -1032,7 +1032,7 @@
           <dl>
             <div class="fact"><dt>Use when</dt><dd>A cheap experiment would reveal more than more discussion, especially for interaction, state, or feasibility questions.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A disposable prototype and a decision about what should or should not move into production work.</dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>grill-with-docs or to-spec after the prototype resolves the uncertainty.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>project-shaping or to-spec after the prototype resolves the uncertainty.</dd></div>
           </dl>
         </article>
 
@@ -1106,7 +1106,7 @@
             <div class="fact"><dt>Use when</dt><dd>The product works, but the code is getting harder to change, test, or reason about.</dd></div>
             <div class="fact"><dt>Output</dt><dd>A visual report of improvement candidates and a selected path for deeper design work.</dd></div>
             <div class="fact"><dt>Uses internally</dt><dd><a class="path" href="#skill-codebase-design">codebase-design</a> <a class="path" href="#skill-grilling">grilling</a> <a class="path" href="#skill-domain-modeling">domain-modeling</a></dd></div>
-            <div class="fact"><dt>Hands to</dt><dd>codebase-design, grill-with-docs, to-spec, or to-tickets depending on the size of the improvement.</dd></div>
+            <div class="fact"><dt>Hands to</dt><dd>codebase-design, project-shaping, to-spec, or to-tickets depending on the size of the improvement.</dd></div>
           </dl>
         </article>
 
